@@ -1,0 +1,109 @@
+Lab 3 due a week from today (current date: 1-9)
+
+DB Layers:
+	1. Internal
+		- Whether or not empno is kept internally as a random list, linearly ordered list, balanced tree, hash table, ways to store (data structure) in the database
+		- Independence - independent of how something is stored internally
+	2. Logical/conceptual
+		- conceptual view - brainstorming a table, ie whiteboard
+		- logical view - the actual tables
+	3. External
+		- views - snapshot of a part of a database, typically part of a symbol table
+
+
+Becomes more abstract as generations go
+1GL (1st generation language)
+	- machine code
+2GL
+	- assembler
+3GL
+	- fortran, cobol, pascal, pl1, c/ c++, java
+	- imperitive language
+	- OOP (3.5)
+4GL
+	- SQL
+	- descriptive
+	- explain what you want to happen, not how
+
+
+https://www.tutorialspoint.com/dbms/relational_algebra.htm
+Relational Models for DBs
+- E.F. Codd
+- Based on compositional treatment of 8-9 basic operations
+- Relational Algebra
+
+
+*Possible Exam Question:
+Relational Algebra:
+Operators:
+1. Renaming - R_Q (P)		Q: new, P: old
+	- salsbb02		node x grade x losal x hisal	
+2. Union	- U
+3. Intersectin - (upsidedown U)  n
+4. Difference	- -
+5. (cross / cartesian) Product - x
+6. Project	-	Pi _a1, a2, a3
+7. Select - Sigma	_sal < 5000
+8. Natural join - bowtie
+	- given table A(a1,..., ak, b1...bm)
+	  			& B(a1,..., ak, c1,...cp)
+				A bowtie B has (a1,...ak, b1,...,bm, c1,..., cp)
+9. divides - divide sign
+	- not independent, you can define it with operations 1-8
+
+TEMP3 = Ax(BxC)
+
+
+Find first name, last name, and salary for people in departments 20 and 30
+
+Pi _ fname, ename, sal (sigma _ deptno = 20 V deptno = 30 (emp bowtie info))
+
+A U B
+union compatible
+
+identical names for their columns, and identical types
+identical attributes names and identical attribute types
+
+Know project, select, and natural join
+
+
+
+
+Rename in SQLplus
+rename salsbb02 to joe;
+desc joe;
+
+
+> create table emp3 as select ename, sal from empbb02 where deptno=20;
+// table of outfielders
+
+> create table emp4 as select ename, sal from empbb02 where deptno=30;
+// table of outfielders
+
+emp 3 and emp 4 has same attribute names and attribute types making them union compatible
+
+> select * from emp3 union select * from emp4;
+
+
+
+////////////////
+comparison operators extended
+
+> select ename, sal from empbb02 where sal IN (2000, 85000);
+// IN - parenthesized list of valid constants 
+
+
+> select ename, sal from empbb02 where sal NOT IN (2000, 85000);
+
+
+<> is unequal
+
+> select ename, incentives from empbb02 where incentives IS NULL;
+
+> select ename, incentives from empbb02 where incentives IS NOT NULL;
+
+> select ename, sal from empbb02 where NOT (incentives IS NULL);
+
+between and ie between 10 and 30, including end points
+
+where sal between 10 and 30

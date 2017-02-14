@@ -1,0 +1,98 @@
+ename in employee table not null attribute
+
+RDBMS properties
+	1. Independence (Irrelevant how data is stored in hard drive)
+	2. Concurrency 
+	3. Persistent (Data doesn't dissapear) (back up and recovery)
+	4. Integrity (DB should be able to help you trust in the fact data is correct)
+		- doubly entry
+		- constraints
+			- primary key constraint (Cannot have multiple primary keys)
+
+
+Instance
+	Default instance name: oncl	xe(11e express)
+Schema
+	scott (default schema)	hr
+
+1 instance, many schemas
+
+desc
+select * from
+name, redid, what we used (oracle live sql? etc) how we did the assignment
+
+
+
+// not an sql command, no need for semicolon, psuedo command
+desc empbb02
+
+select * from empbb02;
+
+empbb02 (empno VARCHAR2(5), ename VARCHAR2(10) NOT NULL)
+
+
+
+// sets number of rows before reprinting
+set pages 200
+select *
+
+'/' repeats the previous command (not pseudo command)
+
+
+
+update empbb02 set sal = 2001 where ename = 'lasorda';
+
+INSERT INTO tableName
+UPDATE tableName SET
+DELETE FROM tableName
+
+insert into empbb02 values('222', null, null, null, null, null, null, null)
+- this doesnt work because ename cannot be null (not null)
+
+insert into empbb02 values('222', 'doe', null, null, null, null, null, null)
+
+order which rows are displayed are not locked in 
+rows are an unordered set, so you cannot insert into i
+
+
+
+delete from empbb02 where empno='222';
+
+
+// table creation
+create table elites (a NUMBER(3), b, NUMBER(4,2));
+Table created.
+
+// table deletion
+drop table elites purge;
+// without 'purge' it will delete elite into the recycle bin
+// used for persistence
+
+// empties the recyclebin
+purge recyclebin;
+
+
+
+DATABASE CONSTRAINTS
+
+key: set of attributes of a table
+candidate key: a minimal key that uniquely identifies any row in a valid set of rows for a table, where minimal means that removing any column invalidates the preceding 
+	ie: empno, uniform number
+	- implies unique and not null
+primary key: a selected candidate key
+
+infotable, employee, department, candidate keys
+info (everyone has to have uniform number with no duplicates - uni second candidate key)
+no primary keys for the first assignment
+
+how to specify a primary key
+// we will not be using this way
+create table emp(empno VARCHAR2(6) PRIMARY KEY, )
+
+2nd way
+describe all columns, add modifier specifying primary key
+create table emp(a, b, c, d, PRIMARY KEY (a,d) )
+
+3rd way
+alter table empbb02 add constraint empbb02_empno_pk primary key(empno);
+

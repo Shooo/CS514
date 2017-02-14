@@ -1,0 +1,117 @@
+
+> ALTER TABLE empbb02 ADD CONSTRAINT empbb02_empno_pk PRIMARY KEY(empno)
+> ALTER TABLE infobb02 ADD CONSTRAINT infobb02_empno_pk PRIMARY KEY(empno)
+> ALTER TABLE deptbb02 ADD CONSTRAINT deptbb02_deptno_pl PRIMARY KEY(dep)
+
+> select * from user_constraints;
+
+// empbb02 is the child
+// depno is the column that will be the foreign key
+> ALTER TABLE empbb02 ADD CONSTRAINT empbb02_depno_fk FOREIGN KEY(deptno) REFERENCES deptbb02(deptno);
+
+these will cause violations (cause orphans):
+creating an entry in the child table with no parent 
+killing a parent that still has children
+
+drops can be cascaded so killing a parent will also kill its children
+
+// this would cause a violation (integrity constraint violated)
+// there is no dept 77
+> insert into empbb02 values('555', 'berg', null, null, null, null, 77, null);
+
+Metaterm
+RDBMS principles
+IPIC
+independence persistence integrity concurrency
+
+ACID
+
+Integrity - the data should be correct
+	how to enforce:
+	- Get the data maniulation people to type everything twice
+	- Using primary keys and foreign keys
+		-ie trying to enter something with the same empno would not work
+	- key constraints: unique key, check constraint, not null search condition 
+		-ie salary cannot be too low - check constraint
+
+> select * from empbb02,infobb02;
+// this will return 225 rows select (15 rows x 15 rows)
+
+natural join, equijoin, self join
+
+// check constraint 
+// must be greater than equal or 1500
+> ... empbb02_sal_ck CHECK(sal>=1500)
+
+
+
+// arithmaticc
+> select ename, sal + 100 from empbb02;
+// adds 100 to all sal
+// does not actually add to data
+
+
+> select round(3.56) from dual;
+// returns 4
+
+> select round(-3.56) from dual;
+// returns -4
+
+
+> select round(5.6789, 2) from dual;
+// returns 5.68
+// rounds 2 places from the decimal
+
+> select round(5678.936, -2) from dual;
+// returns 5700, rounds 2 left from decimal
+
+> select ceil(13.178) from dual;
+// returns 14, ceiling 
+
+> select ceil(-8.66) from dual;
+// returns -8
+
+> select floor(12.789) from dual;
+// returns 12, floor
+
+> select trunc(12.45) from dual;
+// returns 12, truncate, works like floor
+
+> select cos(0) from dual;
+// returns 1, cosine
+
+> select abs(-12.4) from dual
+// reuturns 12.4, absolute
+
+> select ln(2.718281828 from dual);
+// returns close to 1, natural log of e
+
+> select log(2,512) from dual;
+// returns close to 9, log, 2^9 = 512
+
+
+> select substr('qtyuopqrty',2,5) from dual;
+// returns tyuio, second position, 5 letters substring
+
+> select length('facetious') from dual;
+// returns 9 
+
+> select instr('drabcrab','ab') from dual;
+// returns 3, looking for occurence of 2nd param from 1st
+// returns index of where it is
+// instr index of str
+
+> select instr('drabcrab', 'ab', 4) from dual;
+// returns 7
+// first occurence of ab in drabcrab after index 4
+
+> select instr('drabcrab', 'b', 3, 2) from dual;
+// returns 8
+// looks for b in drabcrab, starting from 3rd letter, and gets the 2nd occurence
+
+
+
+> select lpad(1113.45,10,'*') from dual;
+// returns ***113.45 
+// pads left
+// there is also a right pad

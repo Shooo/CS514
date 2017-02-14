@@ -1,0 +1,96 @@
+Website: www.rohan.sdsu.edu/~cs514
+
+
+spool
+set echo i
+set pages 300
+.sql
+spool off
+
+
+set page 400
+
+
+//decode
+
+SET PAGES 100
+SET PAUSE ON
+SET ECHO ON
+SELECT ename, sal AS "old salary",
+DECODE(deptno, 10, sal+56, 20, sal+75, 30, sal+89,sal) AS "new salary" FROM empbb02;
+
+
+
+
+//case
+
+SELECT ename, sal, CASE WHEN sal < 2001 THEN 'LOW PAY'
+						WHEN sal < 50001 THEN 'NORMAL PAY'
+						ELSE 'OVERPAID'
+						END "category" FROM empbb02;
+
+
+
+
+// group function
+select max(sal) from empbb02;
+
+select min(sal) from empbb02;
+
+select sum(sal) from empbb02;
+
+select avg(sal) from empbb02;
+
+select count(incentives) from empbb02;
+// returns 4
+
+select count(*) from empbb02;
+// returns functions
+
+select ename, sal from empbb02 order by sal;
+// rows are unordered (no indeces) 
+// orders in ascending order
+
+select ename, sal from empbb02 order by sal desc;
+// orders in descending order
+// asc for ascending
+
+select ename, sal from empbb02 order by sal desc, ename asc;
+// salary in descending order, ename in ascending order
+// when salary is same, those that were the same are ordered in asc
+// command after comma "ename asc" is used to break ties
+
+
+noneqi.sql
+
+set pages 50
+set pause on
+set echo on
+spool nonequi.dat
+SELECT * FROM empbb02;
+SELECT e.name, e.sal, s.grade
+ FROM empbb2 e, salsbb02 s
+ WHERE e.deptbno < 30 AND s.role = 'hitter' AND e.sal
+	BETWEEN s.losal AND s.hisal;
+set echo off
+spool off
+quit;
+
+
+start nonequi
+
+
+
+create table aaaa(A NUMBER(4), B NUMBER(4));
+
+create table bbbb(B NUMBER(4), C NUMBER(4));
+
+insert into aaaa values(1, 1);
+
+insert into aaaa values(2, 2);
+
+insert into bbbb values(1, 200);
+
+insert into bbbb values(3, 3);
+
+start join

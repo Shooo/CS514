@@ -1,0 +1,102 @@
+alter table deptbb02 add constraint deptbb02_deptno_pk PRIMARY KEY(deptno)
+
+select * from user_constraints
+proof of establishing key constraints
+
+search_condition: "ENAME" IS NOT NULL
+
+desc user_constraints
+
+
+emp
+	parent
+
+info
+	foreign key made in info table
+	references emp table 
+	child
+
+establish link between them
+
+They both share empno
+
+foreign key can be 1 or more columns
+columns do not need to be the same name
+
+requirement of parent: column we use as a foreign key for child should be a primary key in the parent
+	so we muse create a pk first
+
+// empbb02 is the parent table
+// this is enough if columns are the same
+> alter table infobb02 add constraint infobb02_empno_fk FOREIGN KEY(empno) references empbb02
+
+// this syntax is for different columns
+// FOREIGN KEY(column in child) empbb02(column in parent)
+> alter table infobb02 add constraint infobb02_empno_fk FOREIGN KEY(empno) references empbb02(empno)
+
+// to create primary key
+> alter table empbb02 add constraint empbb02_empno_pk PRIMARY KEY(empno)
+
+2 ways to violate the constraint (for foreign keys)
+	If you make an entry in an info table, it must have the same parent with an empno
+	no orphans
+	"integrity constraint violated"
+	adding an orphan to the child table will result in above error
+
+	Another way to violate constraint: if you drop parent table with children referencing it, it will violate
+	this would result in orphans
+	You should drop the children first before dropping parent
+
+ie deptno is primary key in dept table
+info to dept
+emp to department
+
+
+check constraint: (syntax may be a bit off)
+// cannot have sal less than or equal to 0
+> ALTER emp ADD CONSTRAINT empnn02_sal_ck CHECK(sal>0)
+
+// no identical uniform numbers on two players
+> ALTER emp ADD CONSTRAINT empnn02_uni_uk UNIQUE(uni)
+
+NOT NULL is also technically a key constraint, but it comes up as a search condition
+
+PRIMARY implies unique but it will not show up as UNIQUE
+	implies not null and unique
+
+Primary key with multiple columns: the combination is unique
+	two columns primary key for sal in assignment
+
+
+
+
+> select * from empbb02 NATURAL JOIN dept002;
+// natural join eliminates duplicates and combines tables
+
+> select * from empbb02 e, deptbb02 d where e.deptno = d.deptno;
+// e and d are table aliases
+// equijoin as operator is '='
+// in this case it is equivalent as natural join
+
+> select * from empbb02, infobb02;  
+// give me everything from these two tables
+// should get a cartesian product
+// 15 rows in emp 15 rows in info: 225 rows should result
+
+you can also use prodcut to join, though hardly used
+ie looking at all possible pairs
+extremely rate to use product
+
+selfjoin
+nonequijoin
+equijoin
+innerjoin
+outerjoin
+
+> select ename as "last name", sal as salary from empbb02;
+// creates column aliases
+// if no spaces, you dont need quotes. if there are you need double quotes
+// double quotes also control casing
+
+
+> select e1.ename || ' works for ' || e2.ename from empbb02 e1, empbb02 e2 where  e1.boss = e2.empno

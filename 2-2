@@ -1,0 +1,106 @@
+Todays Date: Feb 02 2017
+
+masc2420 - 2415 = st05 username
+
+password cs514
+
+put tables in this account
+by sunday
+
+
+on rohan:
+first cs514 is password
+oracle instance is cs514
+> sqlplus st01/cs514@cs514
+
+//Increase number of rows
+> set pages 400
+
+// repeat previous comand
+> /
+
+> set timing on
+> set timing off
+
+fred.sql
+
+btitle 'Report Done'
+set headsep !
+ttitle 'First example! CS 514'
+spool fred
+set echo on --ignore me
+set pause on
+set pages 30
+-- this is a comment
+select * from empbb02;
+select * from salsbb02;
+--set echo off
+spool off
+
+
+
+
+SPOOL simultaneous peripheral operations online
+
+
+> select sysdate from dual;
+
+
+> select systimestamp from dual;
+// provides more information
+
+
+
+conversion methods:
+to_char
+to_number
+to_date
+
+
+> select to_char(sysdate,'mon/dd/yyyy') from dual;
+02/02/2017
+
+> select to_char(sysdate,'mon dd,yy') from dual;
+feb 02,17
+
+> select to_char(sysdate,'mon dd, yyyy day') from dual;
+feb 02, 2017 thursday
+
+> select to_char(sysdate,'month dd, year') from dual;
+february 02, twenty seventeen
+
+> select to_char(sysdate,'mm/dd/yyyy hh:mi:ss') from dual;
+02/02/2017 07:46:00
+
+> select to_char(sysdate,'mm/dd/yyyy hh:mi:ss AM') from dual;
+02/02/2017 7:47:10 PM
+
+> select to_char(sysdate,'mm/dd/yyyy hh24:mi:ss') from dual;
+02/02/2017 19:48:36
+
+> select sysdate +  10 from dual;
+12-FEB-17
+
+> select sysdate + 30 from dual;
+04-MAR-17
+
+> select round(sysdate) from dual;
+03-FEB-17
+
+> select last_day(sysdate) from dual;
+28-FEB-17
+
+> select next_day(sysdate, 'month') from dual;
+06-FEB-17
+
+> select next_day(sysdate, 'tuesday') from dual;
+07-FEB-17
+
+> select next_day('04-22-1995', 'tuesday') from dual;
+prints closest tuesday in 04-22-1995
+
+> select add_months(sysdate, 22) from dual;
+02-DEC-18
+
+> select months_between(sysdate, 2 '02/JAN/1776') from dual;
+2893
