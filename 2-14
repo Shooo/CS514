@@ -1,0 +1,62 @@
+Cheat using empno for number 4
+
+> select sum(incentives from empbb02;
+// returns 30000
+
+> select avg(incentives) from empbb02;)
+// return 7500
+
+> select avg(nvl(incentives,0)) from empbb02;
+// 2000
+
+> ALTER TABLE salsbb02 ADD junk NUMBER
+// adds junk column to table
+
+> ALTER TABLE salsbb02 DROP COLUMN junk;
+// drops junk column
+
+> ALTER TABLE salsbb02 modify losal NUMBER(12);
+// changes losal type to NUMBER(12)
+
+for number 4, to check increase varchar(50) then change back
+
+> SELECT deptno, sum(sal) from empbb02 group by deptno;
+
+> select deptno, sum(sal) from empbb02 group deptno having deptno < 50
+// using having instead of where for group by
+
+> select ename, sal from empbb02 where sal < (select sal from empbb02 where deptno = 50);
+// select ename and sal from empbb02 where sal is less than sal from depno 50
+
+> select ename, sal from empbb02 where sal < ANY (select sal from empbb02 where deptno = 30);
+// players who make less than the highest page pitcher
+
+> select ename, sal from empbb02 where sal < ALL (select sal from empbb02 where deptno = 30);
+// less than all pitchers, meaning less than the smallest sal pitcher
+
+> select ename, sal from empbb02 where deptno IN (40,30);
+// not a subselect
+
+> select ename, sal from empbb02 where sal < (select sal from empbb02 where deptno IN (30,40));
+// error
+
+> select ename, sal from empbb02 where (sal, deptno) IN (select sal, deptno from empbb02 where deptno < 30);
+
+> select ename, sal from empbb02 where ename LIKE('b%');
+// % is a wild card, 
+// Select ename and sal from empbb02 from people that start with b
+// %a% for anyone with letter a
+
+> select ename, sal from empbb02 where ename LIKE('____');
+// select ename and sal for people with ename of length 4
+
+> select to_char(123456789,'$999,999,999.99') from dual
+// $123,456,789.00
+> select to_char(12345, '$999,999,999') from dual;
+// $12,345
+
+> create view vvv as select ename, sal, incentives from empbb02;
+// need to know
+// can only see the columns selected for this view
+
+> select * from vvv;
