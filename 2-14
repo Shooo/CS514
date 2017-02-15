@@ -60,3 +60,7 @@ for number 4, to check increase varchar(50) then change back
 // can only see the columns selected for this view
 
 > select * from vvv;
+
+at the end of create view:
+with read only
+with this you can only do selects
