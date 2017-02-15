@@ -94,3 +94,6 @@ insert into bbbb values(1, 200);
 insert into bbbb values(3, 3);
 
 start join
+
+
+test
