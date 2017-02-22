@@ -1,0 +1,86 @@
+Tuple Rel. Calc.
+
+Syntax:
+{ x_1, a_1, ... x_k,a_l : wff(x1, ..., x_k) }
+x: range vars
+a: attributes
+wff : well formed formula
+
+Example:
+E.g. { x, ename, x.sal: empbb02 (x) n sal > 10000}
+(n is logical and)
+- find me last names and salary for all employees who make more than 10000
+
+atom wff
+1. tablename(x)
+2. x.a op y.b
+op (operators) = {=, +, <, <=, >, >=}
+3. x.a op constant of type of a
+
+wff:
+1. atomic wff
+2. 7w, wff
+3. w1, V w2, w1, w2, wff
+4. Ex w, wff
+- backwards E, there exists an 
+
+A x W = 7Ex7w
+upsidedown A, 
+
+
+FIND last name & nickname for all players in the infield
+{x.ename, y.nick : empbb02(x) n infobb02(y) n Ez [deptbb02(z) n x.deptno = z.deptno n z.dname=;'infield'] }
+
+Done with first third of the course
+
+Midterm:
+relational theory and SQL, BUZZWORDS (3GL)
+March 7th - midterm 1
+
+
+
+
+
+PLSQL
+Imbedded SQL
+PLSQL - a programming language where sql is imbedded
+
+plsql.sql
+
+accept ann_sal prompt 'please enter an annual salary'
+set echo on
+--% can use VARIABLE or VAR
+--% this is a variation of plsq13.sql with more programming care when a bind or subst. var. is used, the satatement, if used recently before, will be parsed and saved, and the parse step can be omitted
+VARIABLE mo_SAL VARCHAR(10);
+VAR mo NUMBER;
+VAR date2 DAATE:='03-JAN-07';
+DECLARE
+	hv_sal date2 DATE := &ann_sal;
+	v_date DATE := '93-JAN-07;
+BEGIN
+	:mo_sal:TO_CHAR(v_sal/12,'999,999.99');
+	:mo := v_sal;
+END:
+/
+print mo_sal
+
+anonymous block
+mo_sal ii a local variable, it belongs to the block
+they are initialized
+
+
+
+plsq12.sql
+
+DBMS_OUTPUT_.PUT_LINE	outputs in plsql block
+allows report genetation
+
+put_line is a function in the dbms_output package, hence the .
+
+
+sqlpl4.sql
+
+%TYPE means same as
+%TYPE is known as an anchored  type
+
+The SELECT INTO statement retrieves data from one or more database tables, and assigns the selected values to variables or collections
