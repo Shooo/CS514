@@ -1,0 +1,60 @@
+http://plsql-tutorial.com/
+
+
+
+
+NULL and TRUE = NULL 
+
+NULL and FALSE = FALSE
+
+NULL or FALSE = NULL
+
+NULL or TRUE = TRUE
+
+AND cant be true unless both inputs are TRUE
+
+
+plsql6.sql
+
+%ROWTYPE is an anchored type
+- tells us type my_emp is the entire row
+
+
+
+desc dbms_output
+
+
+
+plsqlTable.sql
+
+TYPE food is TABLE of VARCHAR(20) INDEX BY BINARY_INTEGER;
+- user defined type
+
+INDEX_BY
+	Allows indexing like an array
+ https://docs.oracle.com/cd/A57673_01/DOC/server/doc/PLS23/ch4.htm
+
+
+Can you have an record that contains an array and vice versa?
+- Yes
+
+record.sql
+https://www.tutorialspoint.com/plsql/plsql_records.htm
+
+you can use -1 as an index
+
+
+Cursor
+http://plsql-tutorial.com/plsql-cursors.htm
+- a container for a set of rows in a table for the purpose of processing
+- select into, error messages, 
+
+
+cursorImplicit.sql
+
+implicitCursor
+https://docs.oracle.com/cd/B28359_01/appdev.111/b28370/sql_cursor.htm#LNPLS01348
+DELETE department 30 , implicit cursor
+process cursor row by row, initial set, the number of rows deleted when all deleted, ie pitchers, 3
+how to get the value of implicit cursor:
+SQL%ROWCOUNT

@@ -1,0 +1,135 @@
+https://www.techonthenet.com/oracle/cursors/
+
+
+cursorbb02a.sql
+
+After CUSOR ... IS, initialization for the cursor
+
+OPEN executes cursor
+
+FETCH INTO
+
+EXIT WHEN
+
+CLOSE
+
+nofrillscursor
+understand this for midterm2
+
+
+%.. = cursor attribute, something you can extract from a cursor
+
+cursorbb02.sql
+syntactic sugar
+
+cursorbb02c.sql
+active set in parenthesis
+
+cursorbb02d.sql
+
+parameterized declaration
+
+start cursorbb02d.sql
+
+cursorbb02e.sql
+
+start cursorbb02
+
+FOR UPDATE OF sal NOWAIT;
+// allows updating of rows in active set
+
+nowait - if somebody else has table, dont execute
+
+
+cursorbb02f.sql
+
+TYPE cursor_var IS REF CURSOR
+
+REF CURSOR is a pointer to a cursor
+a variable that can point to different cursors, to different active sets
+
+
+cursorbb02g.sql
+
+limits the domain of what the pointer can point to
+
+should always return rows from the employee table
+
+
+cursorbb02h.sql
+anchored local variables
+SYS_REFCURSOR - predefined cursor variable
+
+
+cursorbb02m.sql
+doent work
+
+stored functions and stored procedures
+
+
+getDnamebb02.fn
+
+naming convention : .fn
+You have to type .fn to start function as default is .sql
+
+CREATE FUNCTION, if reran it will not work
+CREATE OR REPLACE, if it already exists it will replace it, can run code multiple times
+
+
+(name IN empbb02.ename%TYPE)
+
+parameters, name is input variable
+
+IN - input parameter
+
+IN OUT
+
+gdname - return name
+
+block has a name = getDnamebb02
+nonanonymous
+
+
+"compile" the code that defines the algorithm can be preprocessed by oracle
+
+how to compile and store code:
+start the script that has the code
+
+MIDTERM QUESTION ^^^^^^
+
+
+getDnamebb02Test.sql
+how to call the function:
+SELECT ename,getDnamebb02(ename) AS "department name"
+
+
+Compile:
+start getdNamebb02.fn
+
+Function created.
+
+start getDnamebb02Test
+
+
+getDnamebb02Test2.sql
+
+EXECUTE
+:deptname - local variable, bind
+
+EXECUTE - syntatic sugar
+you dont need begin declare and end
+minimal anonymous block
+
+no need for a plsql block with EXECUTE, just runs code
+start getDnamebb02Test2
+
+
+getDnamebb02Test3.sql
+
+getDnamebb02Test4.sql
+
+side effect
+
+
+desc getDnamebb02
+describes the stored function
