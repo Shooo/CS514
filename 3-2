@@ -1,0 +1,93 @@
+MIDTERM REVIEW:
+
+2gL : assembler language
+
+Tables in RDBMS are in the Conceptual level
+
+The person at an enterprise in charge of deciding what data to house in an RDBMS, who will have access to which parts of it, so forth is usually called the:
+	DA	- Data Administrator - MBA with 5-10 years experience, someone who knows the business, may not know much about oracle
+		- What kind of info do we want in our database and how public should it be
+		- ANSWER
+	DBA - (Database Adminisitrator) knows all about database
+		- Implements what the DA says to implement
+
+cfedb is an example of an instance
+	cs514 is an instance
+user account is a schema
+
+Any candidate key can be a primary key - True
+	- candidate to be a primary key
+A foreign key in infobb02 can reference any column in empbb02 - False
+	- can only refence few columns
+a check constraint can only be a one column constraint - False
+a foreign key can not contain null values
+a database column can be deleted in Oracle 9i - False
+
+DCL stands for: Data control language
+
+Give value of SELECT FLOOR (-13.3) FROM DUAL : -14
+
+END OF MIDETERM REVIEW
+
+getSideEffectDnamebb02.sql
+
+storedFnInBlock2.sql
+
+unstoredFnInBlockbb02.sql
+	nesting plsql block
+	declaring one function inside of another
+
+
+empstatbb02.proc
+	.proc - extension for procedure
+
+PROCEDURE
+	Separate keywords for procedure
+	input is departmentid, output:
+	outputs into actual parameters
+
+empStatsbb02Test.sql
+
+empStatsbb02Test3.sql
+
+sixPack02.pack
+	prototypes go into .pack
+	similar to c++ headers
+
+function procedure body
+
+
+sixPack02.body
+
+sixPack02Test.sql
+
+sixPack02Test2.sql
+
+sixPackDos02.proc
+
+MIDTERM2: no question about writing package
+	stored function and stored procedure
+
+
+Programming assignment:
+Copying tables
+Move table from schema 1 to schema 2
+
+1. Copy
+2. Export / Import
+	network moves
+	extension: .dmp
+3. sqlldr
+	sql loader
+
+
+table goes to csv, goes to table in another schema by sqlldr
+
+table ---> csv -- sqlldr --> table
+
+How to create csv file:
+spool sals
+
+SELECT grade ||','|| role ||','|| losal ||','|| hisal from salsbb02
+
+spool off
