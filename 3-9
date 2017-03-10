@@ -1,0 +1,103 @@
+Lab4 due March 21st.
+
+desc rainfall
+
+about 167 rows if done correctly
+
+
+
+
+
+plsql exceptions
+
+java allows control of runtime error handlers
+
+plsql allows a lot of control over runtime error handlers
+
+exceptionbb02.sql
+
+user defined exception
+	- create an exception they dont have, raise it yourself, entirely define error handler for it
+keyword: EXCEPTION, RAISE
+
+if sal <= 0, raise v_exception
+
+
+DECLARE BEGIN EXCEPTION END
+
+
+WHEN v_exception THEN	do my own exception
+
+System defined error messages: NO_DATA_FOUND
+NO_DATA_FOUDN is a NAMED EXCEPTION
+When this exception has been raised, throw my own addition to the error
+
+
+SQLCODE - system defined error number
+SQLERRM - system defined error message
+
+We already have a 735, violating a primary key constraint
+this will return an error message under OTHERS
+
+
+output:
+---- ORA-00001: unique constraint (ECKBERG.EMPBB02_EMPNO_PK) violated
+the standard error code was replaced by the OTHER exception made earlier
+
+
+when v_sal := 0, salary was set to 0, a v_exception should be raised
+
+output:
+A negative or zero salary is < min. wage.
+
+Change WHERE epmbb02.empno = '735' tp ='736', returning causing a NO_DATA_FOUND exception
+
+output:
+Zero rows returned
+
+
+
+
+Three types of exceptions
+1. user-defined
+	- v_exception
+2. predefined
+	- NO_DATA_FOUDN
+3. non-predefined
+	- everything else
+
+
+exceptionbb02c.sql
+
+
+describes non-predefined exceptions
+
+error code -2292, integrity constraint error, this exception is not named
+gives us an opportunity to name the exception
+
+
+e_remaining_emps EXCEPTION - the name we are going to name the error, instead of -2292
+
+keyword: PRAGMAEXCEPTION_INIT
+
+PRAGMA EXCEPTION_INIT(e_remaining_emps, -2292);
+// how we rename error code -2292
+// know for midterm 2
+
+ROLLBACK, so we dont screw up the tables
+
+different use of RAISE, reraising error, dont use the exception block, use the standard system error response
+Cannot remove dept 10. Emplpuees remain
+Then standard error is outputed
+
+used to improve on system errors, ie null pointer exception is not very informative
+
+
+
+
+
+
+Top 5, bottom 5, triggers
+NOT TESTED
+
+
