@@ -97,7 +97,21 @@ used to improve on system errors, ie null pointer exception is not very informat
 
 
 
-Top 5, bottom 5, triggers
+Top 5, bottom 5
 NOT TESTED
 
 
+cardinal order
+order statistic
+
+Trigger
+a way to enforce business rules
+a way to enhance error message reporting
+
+the boss creates a new rule and says every employee must be in some department
+if we hire mongo's brother "bongo" we cant just simply place him in the employee table
+but we don't know which department he will go in
+we will ues a trigger
+if we hire an employee without a department number, it will trigger
+if employee with no table, placed in a separate table for someone to decide
+or trigger to send email to department assigning person
