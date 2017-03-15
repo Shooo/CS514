@@ -1,0 +1,229 @@
+Uses of triggers
+1. enhance exception handling
+2. assist with database refactoring
+3. assist with special logging effects, e.g. record the set of people who update a given table in an interval of time
+4. implement participation constraints, fully or partially
+
+
+Two different versions of the table when refactoring
+new version and old version
+
+change in one table triggers a change in the other
+
+4. business rules - every employee must work for a department
+DA rule, not DBA rule
+some business rules are very hard to employ through standard database constraints
+triggers help in this situation
+
+triggers are the if then of databases
+
+
+trig.sql
+
+
+plsql syntax - create or replace, declare,
+
+tigger is the name of the trigger
+
+trigger an event if someone inserts a new department
+
+for each row
+
+whenever we insert a row into the department table, we fire off the trigger
+
+new.restauraunt refers to the new row's restauraunt we are trying to insert into the department table
+
+
+SET SERVEROUTPUT ON
+CREATE OR REPLACE TRIGGER tigger
+BEFORE INSERT ON deptbb02
+FOR EACH ROW
+DECLARE
+	bad_food_exception EXCEPTION;
+BEGIN
+	IF :new.restauraunt LIKE '%sushi%' THEN
+	raise bad_food_exception;
+	END IF;
+EXCEPTION
+	WHEN bad_food_exception THEN
+		DBMS_OUTPUT.PUT_LINE('PELIGRO! raw food');
+		--raise_application_error(-20000,'gotta run');
+
+
+
+
+
+raise_application_error, creating a new error number in a list of unused error numbers
+raise_application_error(-20000,'gotta run');
+
+drop trigger tigger;
+
+
+> start trig.sql
+
+Trigger created.
+
+> insert into deptbb02 values(72, 'sos', 'sushi stop' , null, null);
+// this would activate the trigger
+
+
+trig2.sql
+
+
+
+Whenever somebody enters an employee, it gets recoreded in another table: emp_updaters
+
+
+DML
+
+
+IF INSERTING THEN
+// if its an insert, fire this message
+
+
+> start trige2.sql
+
+
+> desc emp_updaters
+user1	varchar2(10), date1 varchar2(10), ename varchar2(16)
+
+
+> select user from dual;
+// shows which schema youre in
+
+USER
+------------
+ECKBERG
+
+
+
+> insert into empbb02 values('444', 'sam', null, null, null, null, null, null);
+
+insertion into empbb02 detected
+
+1 row created.
+
+
+select * from emp_updaters;
+
+// eckberg	03/14/2017 07:29 PM sam
+// this has been inserted into the emp_updaters do to the trigger
+
+
+
+
+
+
+
+network/admin/tnsnames.ora
+
+mroia - an old retired rohan that is supporting oracle
+
+host - moria.sdsu.edu
+
+port - 1521
+typical default port for connecting to oracle
+
+SID = name of the instance
+System ID
+SID = cs514
+
+
+
+
+
+
+
+JDBC
+
+jdbc0Ora.java
+
+
+url = "jdbc:oracle:thin:@moria.sdsu.edu:1521:cs514"
+
+driver = seomthing that connects the programming language to a database
+drivers are database specific
+
+/jdbc - would have java oracle driver, maybe
+
+
+Statement stmt
+Connection con
+ResultSet
+
+Use java to tell oracle, please send me back ename and position from employee table
+
+
+Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
+// class.forname in this context, searches the filespace for oracle drivers
+// if you dont have an oracle driver this code will not work
+
+java does reflection
+on runtime, if you have an oop hierarchy, you can tell where you are in the hierarchy
+to do that we use the verb, "getclass"
+this will return the class that an object belongs to
+if you say "forname"
+forname returns the name of the class
+
+Class.forName will try to load drivers into a class we have automatically called the DriverManager
+
+
+.newInstance - code should still work if remoced?
+
+
+con - please connect me to url
+
+stmt - username and password as command line parameters
+
+
+ResultSet rs = stmt.executeQuery(query);
+it holds the answer to the query
+
+
+while loop procseses the query
+
+ResultSet is like a cursor, a collectin that can hold a bunch of stuff
+
+while(rs.next()){
+}
+// please give me the next thing in the result set
+
+
+String s2 = rs.getString(2);
+// position
+
+
+ResultSetMetaData rsmd
+information about the data in the resultset
+
+
+SQLException
+a java exception, check exception
+maybe forced to catch this exception
+
+
+
+where driver is:
+/home/ma/eckberg
+
+classes12.zip
+12 - works as a driver with java 1.2 and up
+
+
+to get driver:
+cp ~eckberg/classes12.zip classes12.zip
+
+
+
+put this in your .login
+.login
+
+setenv CLASPATH $HOME/classes12.zip:.
+
+
+
+javac jdbc0Ora.java
+
+java jdbc0Ora eckberg carl
+
+eckberg and carl, command line arguments
