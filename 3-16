@@ -1,0 +1,175 @@
+jdbc0Ora.java
+
+host: moria
+port number: 1521
+instance: cs514
+
+statement, connection, resultset
+
+driver: classes12.zip
+
+
+java jdbc0Ora schema password
+
+
+
+jdbc1Ora.java
+
+con = DriverManager.getconnection(url,"eckberg","carl");
+hardcoding the username and password
+
+javac jdbc1Ora.java
+java jdbc1Ora
+
+
+jdbc2Ora.java
+
+
+ResultSetMetaData rsmd = rs.getMetaData();
+// getColumnCount
+// getColumnType(3)		 column type of third column
+// getColumnLabel(1)
+
+java jdbc2Ora
+
+returns everyones nick names and uniform number
+ignores batting average
+
+in java, a number is denoted by the index 2
+
+java uses its own database types instead of the oracle types
+
+
+java generic database type
+made to map and correspond to the vendor product
+generic - work with any vendor
+
+java3Ora.java
+after @, you can use domain name or ip address
+
+moria and rohan are different, has different ip
+
+
+java4Ora.java
+
+int count - stmt.executeUpdate("INSERT INTO empbb02 " + ...)
+
+on select, we used executequery
+here we are using dml
+instead we use executeUpdate
+
+pitcher - on oracle we use varchar2
+java generic database type string
+
+it is denoted by 12 in java, specifying string
+number is denoted by 2, in java probably an int
+
+
+
+jdbc5Ora.java
+In some vendor products, MONEY is a reserved word
+
+executeUpdate("DROP TABLE money PURGE");
+executeUpdate(creatrString)
+createString = "CREATE TABLE ... "
+
+This code shows how we can use create table and drop table, or DDL, in jdbc
+
+This code did not work
+
+
+
+jdbc6Ora.java
+
+deletes hodges from the employee table
+
+
+
+jdbc7Ora.java
+
+PreparedStatements
+
+similar to a trigger, function, procedure
+it can be partially compiled in advanced
+it runs faster each additional time you use it
+
+PreparedStatement pstmt
+
+normal statement you create it from the connection
+prepare statements you prepare with connection
+conn.prepareStatement
+
+
+helps data entry people be more efficient, similar to substitution or runtime variables
+? are specified later
+
+java variables: dname, restaurant, locatoin, motto;
+
+pstmt.setString(2,dname);
+// the second question mark gets set to "snacks" or dname
+pstmt.setString(3,restaurant);
+// the third question mark, ?m gets set to restauraunt
+
+
+paramaterized statement, prepared, compiled in advanced
+http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html
+
+pstmt.executeUpdate()
+assuming this line is when it does the inserts
+
+
+
+
+
+
+jdbc8Ora.java
+
+ask the data entry people to submit data, not in oracle side, but from the java side
+
+BufferedReader getData = new BufferedReader(new InputStreamReader(System.in));
+// get input from the keyboard
+
+
+perform this loop until inserting a department number of 0
+
+deptno = Integer.parseInt(getData.readLine());
+// converts string and number
+
+the data entry people run the java program
+
+java jdbc8Ora
+
+Winston Churchill - "Never give up"
+
+
+
+jdbc9Ora.java
+
+callablestatement
+
+conn.prepareCall
+
+"{CALL sixPackDos02.empStatsbb02packed(?,?,?)}"
+
+cstmt.registerOutParameter(2,Types.NUMERIC,0);
+// avgsal, totsal are types int
+// we are trying to put values when this code runs
+// java is a strongly typed language, ie java stuffs bits into shorts
+// telling java what type of value we are using, ie Types.NUMERIC
+// the incoming thing is an generic Types.NUMERIC
+// this allows java to turn the NUMERIC value into an int
+
+
+java jdbc9Ora
+
+
+jdbc10Ora.java
+
+
+? = call getRestbb02(?)
+first ? is for the return value
+
+tells java the type thats coming out is varchar
+
+12 - java generic varchar
+2 - java generic number
