@@ -1,0 +1,122 @@
+dont need to know all the parameterizations of databasemetadata sent to dbmc objects
+just the idea
+
+exam 2 is on the thursday after spring break
+
+
+both of these will be on exam 3:
+topic of this unit:
+Normalization of Tables
+DB design by entity design diagrams
+
+database design is the job of the administrator
+
+
+Entity relationship diagrams are for database  design
+Like UML uniform modeling language
+
+
+Entity Diagram:
+refer to picture on notebook
+
+entities are nouns that directly correlate to the schema
+
+underlined bubbles would be part of the primary key
+
+relationships are verbs
+
+verbs in diamonds
+
+business rules - the DA will know more about
+
+arrow represents rule
+employee works in at most one department
+thick line represents at least
+read from right to left for thick line?
+
+a department is managed by precisely one employee at least one employee and at most one employee
+thick line and arrow
+
+
+
+
+
+normalization:
+goal - to eliminate redundency which causes anomalies
+// redundency is bad on database, takes up more disk, queries get complicated
+
+
+E.g. Sushi4all
+Etable
+empno	ename	pos	sal	branchno	bAddress
+110		jo		m	40	1			india
+120		mo		M	35	2			japan
+130		bo		A	20	2			india
+140		kim		m	25	2			japan
+150		tim		a	40	3			france
+160		jim		a	20	3			france
+
+functional dependency - shows the relationship between attributes
+ie primary keys
+ename, pos, etc all depend on empno but that is obvious so we dont mention it
+
+branchno - can get bAddress
+bAddress - can get branchNo
+these two columns are interdependent
+
+
+identifying FD's are a way of eliminating redundency
+
+anomalies:
+insertion anamoly
+	- add dim to India
+	- this leads to redundency, could possibly misspell, leading to problems
+
+third normal form
+make a table out of the functional dependency
+
+make a new table:
+
+countries
+branchNo	bAddress
+1			India
+2			Japan
+3			France
+
+no redundency in this table
+
+eliminate right column
+
+Etable
+empno	ename	pos	sal	branchno
+110		jo		m	40	1
+120		mo		M	35	2
+130		bo		A	20	2
+140		kim		m	25	2
+150		tim		a	40	3
+160		jim		a	20	3
+
+
+split the table into two, possible disadvantage:
+could lead to a lot of joins
+joins could be slow if there are a lot to join with large tables
+could have increased the average response time to our sql statements
+
+
+if performance degrades from increased joins, dba gets complaints
+the dba may decide to DENORMALIZE
+
+once you find the functional dependencies, you can normalize your table, reducing redundency - reducing error, and potentially reducing queries
+
+normalization procedes in stages:
+1st normal form
+2nd normal form
+3rd normal form
+(3.5 normal form)
+4th normal form
+
+at each stage you eliminate redundency
+
+
+how to handle business rules?
+constraints, triggers, enhancements

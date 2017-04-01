@@ -1,0 +1,92 @@
+
+jdbc11Ora.java
+
+jdbc12Ora.java
+
+jdbc13Ora.java
+
+DatabaseMetaData
+
+resultsetmetadata
+
+Be careful with capitalization
+
+
+resultsetmetadata - clientside metadata
+
+Databasemetadata - serverside metadata
+
+
+.getDatabaseProductName() would likely return the vendor's name
+
+.getDriverName() - Oracle JDBC driver
+
+
+the messages we can send to dbmd are numerous:
+
+dbmd.getTables( )
+read documentation for parameters
+
+Database product name = Oracle
+JDBC Driver name - Oracle JDBC driver
+
+Tables starting with E
+
+
+jdbc14Ora.java
+
+dbmd.getSchemas()
+
+Omit schemas starting with the letter M and T
+
+
+jdbc15Ora.java
+get stored procedures stored by ECKBERG
+
+Returns:
+
+distance 2
+empstatsbb02 1
+
+empstats returns a department total salary and department average salary
+empstats returns 2 things
+you use a procedure when you want to return more than one thing
+functions used to return 1 thing, hence the 1 and 2 return values
+
+empstatsbb02packed also returns 2 things
+
+the 1 and 2 indicates
+2 is a function
+1 is a procedure
+
+
+jdbc16Ora.java
+
+dbmd.getColumns
+
+
+dbmd.getProcedureColumns
+
+get columns from a table and you can also get tables for procedures
+
+empstatsbb02 - input value
+
+
+jdbc17Ora.java
+
+
+java generic database type
+
+oracletypes.cursor - not a java generic database type
+
+
+refcursor02.get_names(?)
+
+the purpsoe of this example,
+you can have functions that return complicated stuff
+returns a cursor?
+not just a scalar
+
+
+up to this point we have finished midterm 2
+plsql jdbc baseball triggers
