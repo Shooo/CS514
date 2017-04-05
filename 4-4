@@ -1,0 +1,95 @@
+refer to notebook notes
+
+
+design constraints - business rules
+also called key constraints
+its called a key constraint because it can be implemented with database key constraints
+
+at least on -> can also be refered to a  "total participation constraint"
+employees MUST participate in a department
+
+
+weak entity - entity without a primary key
+
+if I know who the insurer is, all I need is the first name
+
+parent table shows us which suzie is with which emp
+
+
+hierarchy
+
+ISA - similar to subclass, read bottom up
+
+hourly employee is an employee
+contract employee is an employee
+
+subclasses must inherit parent stuff
+square has a length and a width which sounds redundant when we already have side
+
+DBMS once you use ISA, it will be a subentity
+
+is square a subetntity of a rectangle? yes
+is a square a subclass of a rectangle?? no
+
+
+Ternary
+???
+
+departments sponsors projects (ie food drive)
+
+sales department sponsors food drive
+if sales department is inconsistent with its project, ie different number of boxes each year
+we have an employee to monitor the project
+
+
+relationship among relationship
+
+The complex entity is known as an "Aggregation"
+
+
+Binary vs Ternary
+
+2nd version, everything is binary
+joe purchases a policy that benefits susie
+joe - employee, suzie - dependent
+
+two binaries instead of one ternary, we have our arrows in binary
+ternary we have 3
+
+more arrows, we can finer tune the rules
+
+
+
+black marker pen goes to dept from supplier
+black marker - part
+
+supplier haas contract with department for part ?
+
+final midterm - database design and normalization
+
+will not test packages for midterm 2
+
+
+name and briefly explain the three kinds of exceptions in plsql
+user defined
+predefined
+non-predefined
+
+example of a non syntactical sugar cursor
+OPEN FETCH CURSOR etc, no frills
+
+Know how to write a FUNCTION - concrete code to define a simple PL SQL function
+
+jdbc - completely understand jdbc0Ora.java
+
+What is the class significance of 1521 - port number for communicating with oracle
+
+how oracle communicates with a microsoft database - jdbc0.java
+ODBC
+
+What is the role of class.forname for jdbc
+
+know about resultset
+
+will not ask concrete questions about resultset metadata
+know the idea of it
