@@ -1,0 +1,136 @@
+E-R -> Tables
+
+employee becomes
+CREATE TABLE(eid NUMBER(9), ename VARCHAR2(15), sal NUMBER)
+
+
+canonical translation of a relationship
+
+//there might be multiple locations in a department
+
+CREATE TABLE works_in(
+eid NUMBER(9),
+did NUMBER(9),
+locid NUMBER(2),
+since DATE,
+
+FOREIGN KEY(eid) REFERENCES employee,
+FOREIGN KEY(did) REFERENCES department,
+FOREIGN KEY(locid) REFERENCES location,
+
+PRIMARY KEY(eid, did, locid))
+
+
+
+a department is managed by at most 1 employee
+CREATE TABLE manages(
+eid ...,
+did ...,
+since...,
+FOREIGN KEY(eid) REFERENCES employee,
+FOREIGN KEY(did) REFERENCES department,
+PRIMARY KEY(did),
+UNIQUE(eid))
+
+
+eid, did,
+insert into(6666,3,_)
+insert into(7777,3,_)
+// this is impossible, department is managed by at most 1 employee
+// we dont need eid to identify who manages the department, we only need the did to identify the person who manages it
+// we only need one primary key, did because there is at most 1 employee managing the department
+
+
+at least one = total partitipation constraint
+at most one = key constraint
+
+*with arrow pointing to manages (at most one) we can have only eid as primary key as well
+
+insert into(7777,5,_)
+insert into(7777,3,_)
+
+with the current table (no unique implmeneted at this point), this is possible
+with the unique constraint implemented this would not be possible, we can only have 1 of each eid
+
+
+how to enforce at least one rule? not with databse key constraints
+participation constraints are not implemented with database key constraints
+
+at least one, participation constraints are hard to do with database constraints
+
+we can implement with triggers
+if we need the meployee to be in at least one department:
+everytime we add a new employee, it triggers something to add them to a department
+ie email the department adding person that we have a new employee when an employee gets added to the employee table
+
+for the test know how to translate and how to do at most one, not at least one
+
+
+
+NORMALIZATION
+
+
+
+refer to table in notes
+
+
+business rule: don't rent 2 cabins to same person in same time frame
+
+
+PRIMARY KEY?
+client#, prop#
+
+
+
+
+1NF - first normal form: scalar entries
+// arrange things so that in any column or row, we have scalar, not a vector
+c12: joe - has 2 vectors
+c9: flo - has 3 vectors
+// fill in client numbers for every row?
+
+
+
+
+Functional dependencies:
+client#, prop# -> everything else
+client# -> cname
+prop# -> paddr, owner#, oname, rent
+owner# -> oname
+
+
+
+2NF violation- second normal form:
+the left hand side of a FD is a proper subset of a candidate key  and  right hand side candidate key?????
+
+prime attrib is an element of a candidate key
+every other attribute is non-prime
+
+for the maude example: we get
+client# -> cname
+prop# -> paddress, owner#, oname, rent
+
+these are 2nf violations
+fix by creating more tables
+
+create a table out of the violations
+
+after creating this table, the right hand side can be removed from main table
+
+maude(client#, prop#, start date, end date)
+clients(client#, cname)
+properties(prop#, paddr, owner#, oname, rent)
+
+
+
+
+3NF violations non-prime -> non-prime
+target is any of the 3 tables
+violators:
+in propeties table  owner# -> oname
+
+create a new table called owners
+
+owners(owner#, oname)
+so properties becomes:
+properties(prop#, paddr, owner#, rent)
