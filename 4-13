@@ -1,0 +1,153 @@
+1NF - scalars
+2NF - proper subsect of candidate key -> non-prime
+	(partial dependency)
+3NF - non-prime -> non-prime
+	(transitive dependency)
+BCNF - prime -> prime
+	(There are no BCNF violations unless there are two candidate or more candidate keys with a non-empty intersection)
+4NF
+
+// * will be used to indicate primary key, underline was used in class
+
+
+table zoo(m,o,n,k,e,y,s)
+
+FD's:
+k -> e,o
+m -> n,y
+o -> s
+n -> y
+e -> k
+
+candidate keys: {k,m} {e,m}
+
+
+primes {e,k,m}
+
+// prime is the union of the candidate keys
+
+2NF? NO
+k -> o,s
+m -> n,y
+
+zoo(e,k,m)
+koo(k*,o,s)
+moo(m*,n,y)
+
+
+3NF? NO
+o -> s
+n -> y
+
+noo(n,y)
+roo(o,s)
+zoo(e,k,m)
+koo(k,o)
+moo(m,n)
+
+
+BCNF?
+moo(e,k)
+zoo(e,m)
+
+
+
+
+
+
+next example:
+
+mesa(k,i,t,c,h,e,n)
+FD's:
+k,e -> i,t,c,h
+h -> n
+t -> k
+e -> c
+
+1NF? YES
+midterm question ^^^^^
+
+Candidate keys:
+{k,e} {t,e}
+
+primes: {e,k,t}
+
+
+2NF? NO
+e -> c
+
+tab2(e,c)
+mesa(k,i,t,h,e,n)
+
+
+3NF? NO
+h -> n
+
+tab2(e,c)
+tab3(h,n)
+mesa(k,i,t,h,e)
+
+
+BCNF? NO
+
+// a super key contains a candidate key
+// never useful
+
+t -> k
+mesa(i,t*,h,e*)
+tab4(t*,k)
+
+
+
+
+
+next example:
+rattite(o,s,t,r,i,c,h)
+s,t -> o,i,c,r
+o -> r
+t -> h
+i -> s
+
+
+candidate keys: {s,t} {i,t}
+
+Primes: {s,i,t}
+
+
+2NF? NO
+t -> h
+
+rattite(o,s,t,r,i,c)
+bind(t,h)
+
+
+
+3NF? NO
+o -> r
+
+rattite(o,s,t,i,c)
+bigbird(o,r)
+bird(t,h)
+
+
+BCNF? NO
+i -> s
+
+rattite(o,t,i,c)
+bird(t,h)
+bigbird(o,r)
+headsand(i,s)
+
+
+
+
+
+Assignment, due tuesday:
+
+parasites(l,a,w,y,e,r,s)
+
+FD's:
+a,w, -> y,e,s,l
+a -> e
+s -> w
+l -> r
