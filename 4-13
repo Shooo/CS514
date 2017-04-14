@@ -151,3 +151,25 @@ a,w, -> y,e,s,l
 a -> e
 s -> w
 l -> r
+
+
+
+
+
+
+
+
+
+
+
+
+c -> d
+c -> g
+
+combine to c -> d,g
+
+
+c -> d
+d -> g
+
+c -> d,g
