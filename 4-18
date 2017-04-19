@@ -1,0 +1,156 @@
+parasites(l,a,w,y,e,r,s)
+
+a,w, -> y,e,s,l
+a -> e
+s -> w
+l ->r
+
+Candidate keys:
+{a,w}, {a,s}
+
+primes:
+{a,w,s}
+
+1NF? Yes
+
+2NF? NO
+Violations:
+a -> e
+parasites(l,a,w,y,r,s)
+worms(a,e)
+
+3NF? NO
+Violations:
+l -> r
+parasites(l,a,w,y,s)
+worms(a,e)
+leech(l,r)
+
+BCNF? NO
+Violations:
+s -> w
+parasites(l,a,y,s)
+worms(a,e)
+leech(l,r)
+fleas(s,w)
+
+Definition: 3NF Compliant
+(assuming currenty 2NF)
+Left hand side -> right hand side is 3NF compliant
+if left hand side is a cand key OR right hand side is a prime
+
+
+BCNF-Compliant
+An FD left hand side -> right hand side is BCNF-compliant
+if left hand side is a candidate key
+(assuming 3NF)
+
+Both definitions above on exam ^^^^^^^^^^^^^^
+
+
+
+
+Example:
+Roo(t,h,i,s,e,x,a,m)
+t,i -> h,e,x,a
+t -> s
+t -> m
+a -> t
+x -> e
+
+
+Candidate keys:
+{t,i} {a,i}
+Primes:
+{t,i,a}
+
+1NF? Yes
+
+2NF? No
+Violations:
+t -> s
+t -> m
+OR
+t -> s,m
+// preferred ^^^^^^^
+
+Boo(t,s,m)
+// we would lose points if we had two tables: Boo(t,s) Boo(t,m)
+Roo(t,h,i,s,x,a)
+
+
+/*
+if given this situation:
+a -> t,h
+this does not cover any situation: prime -> prime, non-prime
+so we should split this up for better intuition
+a -> t
+a -> h
+split up when right hand side is mixed with prime, nonprime
+combine when right hand side is all prime or all non prime
+*/
+
+
+
+3NF? NO
+Violations:
+x -> e
+
+Boo(t,s,m)
+Goo(x,e)
+Roo(t,h,i,x,a)
+
+BCNF? No
+a -> t
+Boo(t,s,m)
+Goo(x,e)
+Hoo(a,t)
+Roo(h,i,x,a)
+
+
+
+
+
+
+Example:
+
+trump(d,o,n,t,c,r,y)
+FD:
+d,o -> n,t,c,r,y
+c,r -> d
+d -> n
+
+Candidate keys:
+{d,o} {c,r,o}
+Prime:
+{c,r,o,d}
+
+1NF? Yes
+
+2NF? NO
+d -> n
+trump(d,o,t,c,r,y)
+bump(d,n)
+
+3NF? YES
+3NF Compliant
+c,r -> d
+non-prime AND prime
+
+BCNF? NO
+c,r -> d
+
+bump(d,n)
+grump(c,r,d)
+trump(o,t,c,r,y)
+
+
+
+
+
+
+example:
+
+grades(student_id, course#, semester#, grade)
+write down the functional dependencies
+FD:
