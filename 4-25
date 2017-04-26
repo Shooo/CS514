@@ -97,3 +97,5 @@ LOB
 clob
 	character large object
 
+blob
+	binary large object
