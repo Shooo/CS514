@@ -1,0 +1,90 @@
+shipping(shipName, shipType, VoyadeId, Cargo, Port, Date)
+
+FD's:
+shipName -> shipType
+VoyageId -> shipName, cargo
+shipName, Date -> VoyageId, Port
+
+Candidate Keys:
+{VoyageId, Date} {shipName, Date}
+
+Primes {VoyadeId, shipName, Date}
+
+
+1NF? Yes
+
+2NF? No
+Violators:
+shipName -> shipType
+VoyageId -> cargo
+
+ships(shipName, shipType)
+cargos(VoyageId, cargo)
+shipping(shipName, VoyageId, Port, Date)
+
+
+3NF? Yes
+
+BCNF? No
+Violators:
+VoyageId -> shipName
+
+voyages(voyageId, shipName)
+shipping(VoyageId*, Port, Date*)
+
+
+
+From 2nd exam:
+Anonymous:
+DECLARE
+END
+
+named:
+CREATE
+
+named blocks are stored (stored functions and procedures). They are precompiled. They are invocable / callable. Named blocks can be executed
+
+emp_updaters:
+logged event of insertions into the employee table
+
+
+4NF
+assume employees have skills & are competent in various language
+
+
+smith	cook	NULL
+smith	type	null
+smith	null	french
+smith	null	german
+smith	null	greek
+
+
+
+smith	cook	french
+smith	cook	german
+smith	cook	greek
+smith	type	french
+smith	type	german
+smith	type	greek
+
+
+one solution
+skills(name, skill)
+langs(name,lang)
+
+
+another plan: not 1NF
+name skills langs
+ORDBMS
+
+
+
+geodatabase
+
+POI
+points of interest
+
+polylines of interests
+polygons of interest
+
+points to represent coast line

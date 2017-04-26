@@ -1,0 +1,79 @@
+
+
+
+GRADE(student_ID, Course#, semester#, Grade)
+
+FD:
+student_ID, course#, semester# -> grade
+
+BCNF? YES
+
+
+
+example:
+
+mid(h,i,j,k,l,m,n,o)
+FD:
+h,i, -> j,k,l
+j -> m
+k -> n
+l -> o
+
+candidate keys:
+// midterm may ask what a candidate key is, refer to exam 1
+{h,i}
+
+primes:
+{h,i}
+
+1NF? Yes
+
+2NF? Yes
+
+3NF? No
+Violations:
+j -> m
+k -> n
+l -> o
+
+bid(j*,m)
+kid(k*,n)
+nid(l*,o)
+mid(h*,i*,j,k,l)
+
+BCNF? Yes
+// You need at least 2 candidate keys to get a BCNF violation
+
+
+example:
+line order is a purchase order
+line_items(po_number, itemNum, partNum, description, price, qty)
+po_number = purchase order number
+
+FD's:
+PO_number, itemNum -> partNum, description, price, qty
+partNum -> description, price
+
+BCNF
+
+
+
+Example:
+stock keeping unit
+store_item(sku,promotionId,vencor,style,price)
+
+FD's:
+sku, promotionId -> vendor, style, price
+sku -> vendor, style
+
+2NF? No
+
+This will not be on the final ^^^^^^^^^^^^^^
+
+
+
+
+
+example:
+
+shipping(shipName, shipType, VoyageId, Cargo, Port, Date)
