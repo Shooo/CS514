@@ -1,0 +1,49 @@
+objecteg.sql
+
+
+objecteg2.sql
+
+pragma restrict_references puts restrictions on the function streetName, write no database statements
+the function streetName should not have any side effects, should only return a value and not change anything
+
+VARRAY(5) = Variable array, max size 5
+
+
+address_type.body
+
+Oracle knows we need implementation code for streetName
+We need to do this for address_type
+
+it is PL SQL
+
+
+objectegTest.sql
+
+
+start address_type.body
+
+
+objecteg3.sql
+
+
+
+name_type3.body
+
+start name_type3.body
+
+start address_type3.body
+
+start objecteg3Test.body
+
+
+tested material stops here
+
+
+objecteg3b.sql
+
+
+
+
+
+point.sql
+
