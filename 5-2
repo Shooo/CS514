@@ -1,0 +1,66 @@
+all_types is a meta table
+
+
+oracleBasicTypes
+BFILE - binary file *
+BLOB - binary large object *
+	ie pictures
+LOB - large object *
+CHAR - fixed character length *
+CLOB - character large object
+	ie long novel
+DATE
+DECIMAL
+DOUBLE PRECISION
+FLOAT
+INTEGER
+LOB POINTER
+NCLOB - National Character Large Object *
+	a large text object not in english
+RAW
+REAL
+TABLE
+UNSIGNED BINARY INTEGER
+VARCHAR
+VARYING ARRAY
+
+
+desc all_types
+
+
+desc dbms_lob
+
+LOADFROMFILE
+
+
+desc blob_table
+
+select blobid, clob_col from blob_table;
+
+
+set long 1000;
+- allows you to see more of the clob
+
+
+load_file.proc
+
+
+know what they do for exam
+file open
+get length
+load from file
+
+
+select count(*) from images;
+
+
+
+jdbcOraImages.java
+
+
+
+how to get back a motto
+getString()
+
+
+rs.getBlob
