@@ -1,0 +1,86 @@
+Consider the table crigger*b,a,d,g,e,r,s) all the FD's:
+a,d -> b,e,r,g
+b -> g
+d -> s
+e -> a
+
+identify all candidate keys
+
+identify all prime attributes
+
+c) identify 2nf violations if any, and if found, convert the tables into 2NF
+
+d)
+
+
+partial dependenct - same as 2NF
+partial - the left hand side is a partial subset of a candidate key
+
+NP complete
+
+
+
+3 entences
+example
+a department is worked in by at most one employee
+
+which onstraint is most likely incorrect
+a department is worked in by at most one employee
+
+
+d) talk about how its denoted, why its called that, example of a total partisipation constraint
+
+
+insures
+weak entity -
+
+
+3)
+
+aggregation
+
+
+nothing on triggers
+
+
+why do we call some keys key constraints?
+- because the business rules can be implemented through database consraints like primary keys, foreign keys, etc. o
+
+
+10. b
+set long
+set pages?
+
+
+lsize number of byts in the image
+bfile - binary file
+
+no oracle roles stuff
+
+
+authentication
+authorization
+
+resource
+create session
+dba
+
+
+role
+GRAND student_role to  st512
+
+
+privsList
+
+
+select * from session_privs
+
+
+dba
+161
+
+humble user
+12
+
+unix operating system: 9 choices
+9
